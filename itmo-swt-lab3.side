@@ -1,0 +1,42 @@
+{
+  "id": "e0b6141e-564b-42e9-bec6-8f4f96461c76",
+  "version": "2.0",
+  "name": "itmo-swt-lab3",
+  "url": "",
+  "tests": [{
+    "id": "bb7494ce-077d-4a8b-9fd5-27985e0bb4f1",
+    "name": "TS-02-01. Начало просмотра через Start Exploring",
+    "commands": [{
+      "id": "b799ac2a-e25e-4cb5-8de4-05935716d526",
+      "comment": "",
+      "command": "open",
+      "target": "mix.com",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7d0c5b10-6489-4bed-83ba-47ed222e5f5f",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//*[contains(text(),'Start Exploring')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1ce04139-53fd-412e-84b0-0e659979b72c",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'Next')]",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e5779170-3d91-4ecb-a418-81e5e0cd8efb",
+    "name": "G2. Просмотр контента",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["bb7494ce-077d-4a8b-9fd5-27985e0bb4f1"]
+  }],
+  "urls": [],
+  "plugins": []
+}
