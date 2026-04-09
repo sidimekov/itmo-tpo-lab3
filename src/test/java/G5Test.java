@@ -3,19 +3,16 @@
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.core.IsNot.not;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.JavascriptExecutor;
 
 import java.time.Duration;
 import java.util.*;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class G5Test {
     private WebDriver driver;
@@ -63,6 +60,29 @@ public class G5Test {
         {
             WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(5));
             wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'z-20')]/button[not(contains(@class, 'btn-secondary'))]")));
+        }
+    }
+
+    //хз
+    @Test
+    public void tS0501() throws InterruptedException {
+        // Открыть главную страницу Mix
+        driver.get("https://mix.com//");
+        // Нажать на Apple авторизацию
+        driver.findElement(By.xpath("(//form[contains(@action,'/auth/apple')]/button)[1]")).click();
+        // Ручное заполнение данных
+        Thread.sleep(30000);
+        // Нажатие на +
+        driver.findElement(By.xpath("(//div[contains(@class, 'hover:text-primary')])[1]")).click();
+        // Ввод ссылки
+        driver.findElement(By.xpath("//input[@type='url']")).sendKeys("https://github.com/sidimekov/itmo-tpo-lab3/tree/main/src/test/java");
+        // Опубликовать
+        driver.findElement(By.xpath("//input[@type='submit']")).click();
+        // Загрузка и проверка публикации
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'go2072408551')]/div[@role='status' and @aria-live='polite']")));
+            assertThat(driver.findElement(By.xpath("//div[contains(@class, 'go2072408551')]/div[@role='status' and @aria-live='polite']")).getText(), is("Added to Mix"));
         }
     }
 }
