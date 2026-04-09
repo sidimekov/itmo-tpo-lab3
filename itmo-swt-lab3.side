@@ -265,6 +265,124 @@
       "targets": [],
       "value": "true"
     }]
+  }, {
+    "id": "275b658f-a41c-484c-b829-e0bbb16d9425",
+    "name": "TS-04-01 Попытка комментария (гость)",
+    "commands": [{
+      "id": "f8d30ad5-4f40-4362-abc3-b3ed77084c9c",
+      "comment": "",
+      "command": "open",
+      "target": "https://mix.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a2531f68-fdfb-45c3-91df-240c89bbeb4f",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Start Exploring']",
+      "targets": [
+        ["css=.relative:nth-child(2) > .mx-auto > span", "css:finder"],
+        ["xpath=//div[@id='__next']/main/div/div/div/div[2]/div[2]/button/span", "xpath:idRelative"],
+        ["xpath=//div[2]/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Start Exploring')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a87f8eb7-e7ac-4b8a-a0cd-05b4a2620da8",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "4ce74d5d-ffd5-45ad-8ca7-48eb3d2791bd",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Join the conversation']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c0747881-9733-4f03-9dc0-d74e4e716f69",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//div[normalize-space()='Sign in to join the conversation']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0a81c59c-a8e2-4ae6-9a8d-fe1fa1ad7bf6",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//button[@aria-label='Close modal']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed28a4a0-9516-4e5a-bf20-27739832819e",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//button/span[normalize-space()='Email']",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "1c3e071d-0d3c-4130-9592-f3746c78a972",
+    "name": "TS-04-02 Отображение комментариев",
+    "commands": [{
+      "id": "ce664441-94fc-41dd-b79b-81b5f9ca3431",
+      "comment": "",
+      "command": "open",
+      "target": "https://mix.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96addc2d-713e-478f-b8a1-c977991b6959",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Start Exploring']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6da0e33-c54d-4032-bdac-392845249a4e",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "f9b49930-8dd7-4285-89ae-9eb8023242f0",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "xpath=//button[.//div[contains(.,'Comments')]]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5676945-727c-468a-81f7-c0bb8eca2f6e",
+      "comment": "Нажатие (разворачивание) коментов",
+      "command": "click",
+      "target": "xpath=//button[.//div[contains(.,'Comments')]]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b71cadfe-4981-4269-b091-43e9668088f0",
+      "comment": "Проверка видимости бокса с комментариями",
+      "command": "assertElementPresent",
+      "target": "xpath=//div[contains(@class,'overflow-y-scroll') and contains(@class,'space-y-4')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "60a5d988-f496-4d68-b83f-608bc8be7e88",
+      "comment": "Нажатие (сворачивание) коментов",
+      "command": "click",
+      "target": "xpath=//button[.//div[contains(.,'Comments')]]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ac115bc-c392-4366-b603-fd05a2ab802f",
+      "comment": "Проверка что в боксе с коментами ничего нет после сворачивания",
+      "command": "assertElementNotPresent",
+      "target": "xpath=//div[@class='space-y-4 overflow-y-scroll scrollbar-hide p-2']/*",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "e5779170-3d91-4ecb-a418-81e5e0cd8efb",
@@ -273,6 +391,13 @@
     "parallel": false,
     "timeout": 300,
     "tests": ["bb7494ce-077d-4a8b-9fd5-27985e0bb4f1", "99411df1-febe-415b-a435-6be0732f913b", "7de53aff-9ff2-4e42-ad80-849597f05a13", "fd9b5dd6-cc0c-44d4-a110-0fe0f67824da"]
+  }, {
+    "id": "1948751e-a55d-4952-ac4f-bff3056f5c70",
+    "name": "G4. Комментарии ",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["275b658f-a41c-484c-b829-e0bbb16d9425", "1c3e071d-0d3c-4130-9592-f3746c78a972"]
   }],
   "urls": ["https://mix.com/"],
   "plugins": []
