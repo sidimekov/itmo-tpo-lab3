@@ -35,6 +35,8 @@ public class G3Test {
     public void tS0301_tS0302() throws InterruptedException {
         // Открываем материал
         driver.get("https://mix.com/!870259105913111552");
+        //Закрыть окно, если оно есть
+
         // Нажать на авторизацию
         driver.findElement(By.xpath("//button[text()='Join Mix']")).click();
         // Выбираем Apple
@@ -42,7 +44,7 @@ public class G3Test {
         // Ручное заполнение данных
         Thread.sleep(30000);
         // Нажимаем Like
-        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]")).click();
+        driver.findElement(By.xpath("//button[./span[text()='Like (L)']]/button")).click();
         //Проверяем, что он стоит
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -50,7 +52,7 @@ public class G3Test {
             Thread.sleep(5000);
         }
         // Нажимаем Like
-        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]")).click();
+        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]/button")).click();
         //Проверяем, что он не стоит
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -58,7 +60,7 @@ public class G3Test {
             Thread.sleep(5000);
         }
         // Нажимаем Disike
-        driver.findElement(By.xpath("//div[./span[text()='Dislike (D)']]")).click();
+        driver.findElement(By.xpath("//div[./span[text()='Dislike (D)']]/button")).click();
         //Проверяем, что такого контента не будет
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
