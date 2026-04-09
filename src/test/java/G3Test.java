@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -36,6 +37,8 @@ public class G3Test {
         // Открываем материал
         driver.get("https://mix.com/!870259105913111552");
         //Закрыть окно, если оно есть
+        //driver.findElement(By.xpath("//div[@id='close' and @aria-label='Закрыть']")).click();
+        //Thread.sleep(500000);
 
         // Нажать на авторизацию
         driver.findElement(By.xpath("//button[text()='Join Mix']")).click();
