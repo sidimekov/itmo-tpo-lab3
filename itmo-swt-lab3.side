@@ -2,7 +2,7 @@
   "id": "e0b6141e-564b-42e9-bec6-8f4f96461c76",
   "version": "2.0",
   "name": "itmo-swt-lab3",
-  "url": "",
+  "url": "https://mix.com/",
   "tests": [{
     "id": "bb7494ce-077d-4a8b-9fd5-27985e0bb4f1",
     "name": "TS-02-01. Начало просмотра через Start Exploring",
@@ -10,23 +10,260 @@
       "id": "b799ac2a-e25e-4cb5-8de4-05935716d526",
       "comment": "",
       "command": "open",
-      "target": "mix.com",
+      "target": "/",
       "targets": [],
       "value": ""
     }, {
       "id": "7d0c5b10-6489-4bed-83ba-47ed222e5f5f",
       "comment": "",
       "command": "click",
-      "target": "xpath=//*[contains(text(),'Start Exploring')]",
+      "target": "xpath=//button[normalize-space()='Start Exploring']",
       "targets": [],
       "value": ""
+    }, {
+      "id": "a9a58c52-2785-402d-a775-d2e12a6fd2f5",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [],
+      "value": "30000"
     }, {
       "id": "1ce04139-53fd-412e-84b0-0e659979b72c",
       "comment": "",
       "command": "assertElementPresent",
-      "target": "xpath=//*[contains(text(),'Next')]",
+      "target": "xpath=//img[@alt='Mix']",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "5a9f332c-8551-45f3-a423-c5742e15a77b",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "xpath=//button[normalize-space()='Next']",
       "targets": [],
       "value": ""
+    }, {
+      "id": "4c2d5676-d84d-408d-af15-47603ef592b4",
+      "comment": "",
+      "command": "assertElementNotPresent",
+      "target": "xpath=//h1[normalize-space()='Expand your mind']",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "99411df1-febe-415b-a435-6be0732f913b",
+    "name": "TS-02-02. Переход к следующему материалу",
+    "commands": [{
+      "id": "31b409bb-c509-4964-8bfd-c879273e8022",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a5f2506a-f5d6-4bef-9369-468138c64479",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Start Exploring']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bed81b23-c8bd-439b-8bb8-cd6ac0109cf7",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "92732633-af32-4247-959a-2ba3a35343d6",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return window.location.href",
+      "targets": [],
+      "value": "oldUrl"
+    }, {
+      "id": "1ae1ba51-250e-498d-8e0f-78cda4439b4b",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "494f4e83-5da6-4a79-b2be-9707a8cc3ee4",
+      "comment": "",
+      "command": "pause",
+      "target": "3000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e8f1bc95-cefb-4521-b47d-d0e2fe9615c5",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return window.location.href",
+      "targets": [],
+      "value": "newUrl"
+    }, {
+      "id": "81bf755f-65ea-44b6-9c62-810074793d07",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return ${oldUrl} !== ${newUrl}",
+      "targets": [],
+      "value": "isChanged"
+    }, {
+      "id": "c99cbdb0-5b90-4bd4-86d3-5a84d93b1bf6",
+      "comment": "",
+      "command": "assert",
+      "target": "isChanged",
+      "targets": [],
+      "value": "true"
+    }]
+  }, {
+    "id": "7de53aff-9ff2-4e42-ad80-849597f05a13",
+    "name": "TS-02-03 Доступность элементов просмотра после перехода к материалу",
+    "commands": [{
+      "id": "e9e4214e-2728-4e7c-b576-3366d8d0be61",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1177b38e-2839-4370-a3d8-6f7fbea1c978",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Start Exploring']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a12ad30-2078-47eb-8070-a169992d31d0",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "a48496e2-4ecf-4402-ac33-4a7f25874dbd",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//img[@alt='Mix']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04053421-8c05-4212-ae53-ef20779a3337",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0d67dfc1-3538-4ca1-b7f8-c4a943d299fc",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//button[normalize-space()='Join Mix']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2fcbdb77-3e74-4dcf-8aa2-40601f4f84f9",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//main//*[normalize-space()='Tags']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bea02bbb-2fe1-4689-a29e-14511d848419",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//button[.//div[contains(.,'Comments')]]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "fd9b5dd6-cc0c-44d4-a110-0fe0f67824da",
+    "name": "TS-02-04. Повторный последовательный переход к следующему материалу",
+    "commands": [{
+      "id": "68b84cca-2554-4f3f-94dc-1a83d55f5f51",
+      "comment": "",
+      "command": "open",
+      "target": "https://mix.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1ae345ad-2995-4c0b-9faf-f8ed5335d81c",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Start Exploring']",
+      "targets": [
+        ["css=.relative:nth-child(2) > .mx-auto", "css:finder"],
+        ["xpath=//div[@id='__next']/main/div/div/div/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Start Exploring')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "637d1bb0-399d-4e59-918f-d792f669c674",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "8e9b7462-4eed-4006-869c-4f7fd757df2b",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return window.location.href",
+      "targets": [],
+      "value": "url1"
+    }, {
+      "id": "b8cbc488-e3a0-4d6c-b05a-4da658f2d2eb",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [
+        ["css=.light\\3Atext-white:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='__next']/main/div/div/div/div[2]/div[2]/div/div[2]/button/div/span", "xpath:idRelative"],
+        ["xpath=//button/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "efde23ad-cd0e-49c9-a0c8-fa3362e63ee5",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return window.location.href",
+      "targets": [],
+      "value": "url2"
+    }, {
+      "id": "6d5ce75f-8946-4828-9bc2-bfb9b7481bf3",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[normalize-space()='Next']",
+      "targets": [
+        ["css=.light\\3Atext-white:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='__next']/main/div/div/div/div[2]/div[2]/div/div[2]/button/div/span", "xpath:idRelative"],
+        ["xpath=//button/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a1d20b9-67af-480b-8060-38c2786cf5a4",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return window.location.href",
+      "targets": [],
+      "value": "url3"
+    }, {
+      "id": "fb92e8e5-d053-4af5-a0cf-9bb7d06db822",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return new Set([${url1}, ${url2}, ${url3}]).size === 3;",
+      "targets": [],
+      "value": "isDifferent"
+    }, {
+      "id": "c8ea56f2-d90d-4dab-9192-0ebe6a97b4c8",
+      "comment": "",
+      "command": "assert",
+      "target": "isDifferent",
+      "targets": [],
+      "value": "true"
     }]
   }],
   "suites": [{
@@ -35,8 +272,8 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["bb7494ce-077d-4a8b-9fd5-27985e0bb4f1"]
+    "tests": ["bb7494ce-077d-4a8b-9fd5-27985e0bb4f1", "99411df1-febe-415b-a435-6be0732f913b", "7de53aff-9ff2-4e42-ad80-849597f05a13", "fd9b5dd6-cc0c-44d4-a110-0fe0f67824da"]
   }],
-  "urls": [],
+  "urls": ["https://mix.com/"],
   "plugins": []
 }
