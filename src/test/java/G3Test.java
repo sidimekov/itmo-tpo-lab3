@@ -44,7 +44,7 @@ public class G3Test {
         // Ручное заполнение данных
         Thread.sleep(30000);
         // Нажимаем Like
-        driver.findElement(By.xpath("//button[./span[text()='Like (L)']]/button")).click();
+        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]/button")).click();
         //Проверяем, что он стоит
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
