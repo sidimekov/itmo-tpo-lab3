@@ -384,6 +384,137 @@
       "value": ""
     }]
   }, {
+    "id": "58c633e8-a059-4f20-afaf-b1af6704b318",
+    "name": "TS-07-01. Проверка открытия окна при входе с Google с главной",
+    "commands": [{
+      "id": "948d20bc-d61f-4156-bc34-8219620e90fe",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3b79e606-7c0e-4725-ab2a-358ffd007be5",
+      "comment": "",
+      "command": "storeWindowHandle",
+      "target": "win0",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "70b6ac5b-928a-413c-97bf-2f9d0458265e",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[@aria-label='Войти с аккаунтом Google (откроется в новой вкладке)']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ab3f8ad9-ab02-4f4c-9845-4101b989e6c4",
+      "comment": "",
+      "command": "pause",
+      "target": "1000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "feb83914-06c7-4532-8591-65db43e013e7",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return window.location.href",
+      "targets": [],
+      "value": "newWindowUrl"
+    }, {
+      "id": "a31d0c04-d66b-43fd-9766-3d282036e79d",
+      "comment": "тут я доделаю пожалуй через web driver в коде потому что нет команд вообще тут нормальных",
+      "command": "executeScript",
+      "target": "return ${win0} !== ${!WINDOW_HANDLE}",
+      "targets": [],
+      "value": "notEquals"
+    }, {
+      "id": "c9f72a39-adf1-4c16-9af8-12630040187d",
+      "comment": "",
+      "command": "assert",
+      "target": "notEquals",
+      "targets": [],
+      "value": "true"
+    }, {
+      "id": "758b3d1e-16b8-4a0a-a1c9-d96c9fccf573",
+      "comment": "",
+      "command": "verify",
+      "target": "${newWindowUrl}",
+      "targets": [],
+      "value": "*google*"
+    }]
+  }, {
+    "id": "07c23e28-0260-453b-bb7f-326984c0c6ac",
+    "name": "TS-07-00. Отображение способов входа",
+    "commands": [{
+      "id": "b3840c84-a1d5-4964-8a53-2f400e5e1c33",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "228a8b5c-166a-4c80-a11e-07dc427802d7",
+      "comment": "проверка google",
+      "command": "verifyElementPresent",
+      "target": "xpath=//div[@aria-label='Войти с аккаунтом Google (откроется в новой вкладке)']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8472aeb0-1f93-47cf-b81d-f8518e0f19b3",
+      "comment": "проверка facebook",
+      "command": "verifyElementPresent",
+      "target": "xpath=(//form[contains(@action,'/auth/facebook')])[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec4927e1-c2f9-440a-a87c-c8ada262b686",
+      "comment": "проверка твитера",
+      "command": "verifyElementPresent",
+      "target": "xpath=(//form[contains(@action,'/auth/twitter')])[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "046be1c8-79f5-4757-8081-8a677d98e068",
+      "comment": "проверка яблока",
+      "command": "verifyElementPresent",
+      "target": "xpath=(//form[contains(@action,'/auth/apple')])[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d8275ea-e937-458c-b7b6-5f998b08d0e4",
+      "comment": "првоерка через почту",
+      "command": "verifyElementPresent",
+      "target": "xpath=(//button[contains(@class, 'btn-square') and not(contains(@class, 'focus:outline-none'))])[1]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "4ee85e0e-7160-4863-931f-54fb64de6aaa",
+    "name": "TS-07-02. Проверка открытия окна при входе с X с главной",
+    "commands": [{
+      "id": "881545d8-7cbd-453a-8e2c-2be730dc2b4d",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d08a92f2-ca2d-4630-a5be-4d5f8d833a8f",
+      "comment": "",
+      "command": "storeWindowHandle",
+      "target": "win0",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "109fff74-9c4d-47bb-8ac7-9322544ef7ca",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//form[contains(@action,'/auth/facebook')])[1]//button",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
     "id": "4eaa95ac-9d06-4306-91bf-bc352842af36",
     "name": "TS-06-01. Отображение списка тегов",
     "commands": [{
@@ -667,6 +798,13 @@
     "parallel": false,
     "timeout": 300,
     "tests": ["275b658f-a41c-484c-b829-e0bbb16d9425", "1c3e071d-0d3c-4130-9592-f3746c78a972"]
+  }, {
+    "id": "f3fbecdd-5c11-43f8-8c23-582205779b4b",
+    "name": "G7. Проверка доступных способов входа",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["07c23e28-0260-453b-bb7f-326984c0c6ac", "58c633e8-a059-4f20-afaf-b1af6704b318"]
   }, {
     "id": "46d2db17-dc08-43bd-a213-52adf7802d43",
     "name": "G6. Навигация по связанному контенту",
