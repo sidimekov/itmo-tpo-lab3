@@ -383,6 +383,95 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "4eaa95ac-9d06-4306-91bf-bc352842af36",
+    "name": "TS-06-01. Отображение списка тегов",
+    "commands": [{
+      "id": "ac247c12-416c-4b2a-a9dd-8f60de3745ce",
+      "comment": "Открываем материал",
+      "command": "open",
+      "target": "/!870259105913111552",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1c14da79-2dd6-4ebc-a475-f26712ebc9d4",
+      "comment": "Проверка о наличие окна тегов",
+      "command": "waitForElementVisible",
+      "target": "xpath=//div[text()='Tags']",
+      "targets": [],
+      "value": "3000"
+    }]
+  }, {
+    "id": "79526cc2-5acb-4ec3-9c6f-15d7430a119f",
+    "name": "TS-06-02. Переход по тегу",
+    "commands": [{
+      "id": "927d4397-94c7-4075-be40-3fd62b17ec24",
+      "comment": "Открываем материал",
+      "command": "open",
+      "target": "/!870259105913111552",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a4b444de-b5cf-44bf-96e8-b3fa2e6ad4c4",
+      "comment": "Проверка о наличие окна тегов",
+      "command": "waitForElementVisible",
+      "target": "xpath=//div[text()='Tags']",
+      "targets": [],
+      "value": "3000"
+    }, {
+      "id": "8a9f256f-044c-4b50-9573-0eef1b94baad",
+      "comment": "Сохраняем текст тега",
+      "command": "storeText",
+      "target": "xpath=(//a[contains(@class, 'btn-link') and contains(@class, 'mb-1.5')]/div/div/span)[1]",
+      "targets": [],
+      "value": "selectedTag"
+    }, {
+      "id": "dee6781e-b9f9-4bc1-ad8b-3d728b07de4e",
+      "comment": "Переходим по тегу",
+      "command": "click",
+      "target": "xpath=(//a[contains(@class, 'btn-link') and contains(@class, 'mb-1.5')])[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "12756319-997d-4d17-8bbd-409f0cc19bdc",
+      "comment": "Проверяем, что заголовок ленты соответствует выбранному тегу",
+      "command": "assertText",
+      "target": "xpath=//p[contains(@class, 'text-3xl')]",
+      "targets": [],
+      "value": "${selectedTag}"
+    }]
+  }, {
+    "id": "7ddfae91-9dd9-42b4-8499-ddd9a42a779a",
+    "name": "TS-06-03. Отображение связанного контента после выбора тега",
+    "commands": [{
+      "id": "f3b55616-5333-4ea3-a8f8-666459cfca4f",
+      "comment": "Открываем тег",
+      "command": "open",
+      "target": "/topic/guitars",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a9fbed4b-fac6-4b67-8a64-6faa4b08a53e",
+      "comment": "Сохраняем текст тега",
+      "command": "storeText",
+      "target": "xpath=//p[contains(@class, 'text-3xl')]",
+      "targets": [],
+      "value": "selectedTag"
+    }, {
+      "id": "12c1c027-ad7d-40c3-9459-dc01a5013155",
+      "comment": "Переходим по первой публикации в подборке",
+      "command": "click",
+      "target": "xpath=(//div[contains(@class, 'xblock')]/div/div/a)[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96af2a74-5502-43d7-99b0-b8005770e0b2",
+      "comment": "Проверка что такой тег существует",
+      "command": "assertElementPresent",
+      "target": "xpath=(//a[contains(@class, 'btn-link') and contains(@class, 'mb-1.5')]/div/div/span)",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "e5779170-3d91-4ecb-a418-81e5e0cd8efb",
@@ -398,6 +487,13 @@
     "parallel": false,
     "timeout": 300,
     "tests": ["275b658f-a41c-484c-b829-e0bbb16d9425", "1c3e071d-0d3c-4130-9592-f3746c78a972"]
+  }, {
+    "id": "46d2db17-dc08-43bd-a213-52adf7802d43",
+    "name": "G6. Навигация по связанному контенту",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["7ddfae91-9dd9-42b4-8499-ddd9a42a779a", "79526cc2-5acb-4ec3-9c6f-15d7430a119f", "4eaa95ac-9d06-4306-91bf-bc352842af36"]
   }],
   "urls": ["https://mix.com/"],
   "plugins": []
