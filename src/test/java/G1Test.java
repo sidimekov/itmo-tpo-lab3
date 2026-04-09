@@ -84,7 +84,7 @@ public class G1Test {
         driver.findElement(By.xpath("(//button[contains(@class, 'btn-square') and not(contains(@class, 'focus:outline-none'))])[1]")).click();
         // Открытие окна
         {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[normalize-space()='Join Mix']")));
             assertThat(driver.findElement(By.xpath("//div[text()='Join Mix']")).getText(), is("Join Mix"));
         }

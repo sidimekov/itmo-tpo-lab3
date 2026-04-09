@@ -33,50 +33,39 @@ public class G3Test {
     }
 
     @Test
-    public void tS0301Like() {
+    public void tS0301_tS0302() throws InterruptedException {
         // Открываем материал
         driver.get("https://mix.com/!870259105913111552");
-        // Ждём кнопку Like
+        // Нажать на авторизацию
+        driver.findElement(By.xpath("//button[text()='Join Mix']")).click();
+        // Выбираем Apple
+        driver.findElement(By.xpath("//button[./span[text()='Apple']]")).click();
+        // Ручное заполнение данных
+        Thread.sleep(30000);
+        // Нажимаем Like
+        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]")).click();
+        //Проверяем, что он стоит
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".translate-x-0\\.5")));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[./span[text()='Like (L)'] and ./button[contains(@class, 'opacity-100')]]")));
+            Thread.sleep(5000);
         }
         // Нажимаем Like
-        driver.findElement(By.cssSelector(".translate-x-0\\.5")).click();
-        // Ждём обновления UI
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // Проверяем появление окна join mix
-        {
-            List<WebElement> elements = driver.findElements(By.cssSelector(".p-10"));
-            assert (!elements.isEmpty());
-        }
-    }
-
-    @Test
-    public void tS0302Disike() {
-        // Открываем материал
-        driver.get("https://mix.com/!870259105913111552");
-        // Ждём кнопку Like
+        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]")).click();
+        //Проверяем, что он не стоит
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".-translate-x-0\\.5")));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[./span[text()='Like (L)'] and ./button[contains(@class, 'opacity-50')]]")));
+            Thread.sleep(5000);
         }
-        // Нажимаем Like
-        driver.findElement(By.cssSelector(".-translate-x-0\\.5")).click();
-        // Ждём обновления UI
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // Проверяем появление окна join mix
+        // Нажимаем Disike
+        driver.findElement(By.xpath("//div[./span[text()='Dislike (D)']]")).click();
+        //Проверяем, что такого контента не будет
         {
-            List<WebElement> elements = driver.findElements(By.cssSelector(".p-10"));
-            assert (!elements.isEmpty());
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='status' and @aria-live='polite']")));
+            assertThat(driver.findElement(By.xpath("//div[@role='status' and @aria-live='polite']")).getText(), is("You'll see less like that"));
+            Thread.sleep(5000);
         }
     }
 
@@ -84,21 +73,16 @@ public class G3Test {
     public void tS0303() throws InterruptedException {
         // Открываем материал
         driver.get("https://mix.com/!870259105913111552");
-        // Ждём первый тег
-        {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".btn-link:nth-child(1) > .flex")));
-        }
         // Сохраняем текст тега
-        String selectedTag = driver.findElement(By.cssSelector(".btn:nth-child(1) > .flex > .flex > span")).getText();
+        String selectedTag = driver.findElement(By.xpath("(//a[contains(@class, 'btn-link') and contains(@class, 'mb-1.5')]/div/div/span)[1]")).getText();
         // Переходим по тегу
-        driver.findElement(By.cssSelector(".btn:nth-child(1) > .flex > .flex > span")).click();
-        // Ждём загрузки (можно через WebDriverWait)
-        Thread.sleep(2000); // или лучше WebDriverWait
+        driver.findElement(By.xpath("(//a[contains(@class, 'btn-link') and contains(@class, 'mb-1.5')])[1]")).click();
         // Проверяем, что заголовок ленты соответствует выбранному тегу
-        String feedHeader = driver.findElement(By.cssSelector(".text-3xl")).getText();
-        // assert с реальной переменной
-        assertThat(feedHeader, is(selectedTag));
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class, 'text-3xl')]")));
+            assertThat(driver.findElement(By.xpath("//p[contains(@class, 'text-3xl')]")).getText(), is(selectedTag));
+        }
     }
 
   public Map<String, Object> getVars() {
