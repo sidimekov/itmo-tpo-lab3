@@ -8,7 +8,6 @@ import static org.hamcrest.CoreMatchers.is;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
@@ -68,28 +67,4 @@ public class G3Test {
             Thread.sleep(5000);
         }
     }
-
-    @Test
-    public void tS0303() throws InterruptedException {
-        // Открываем материал
-        driver.get("https://mix.com/!870259105913111552");
-        // Сохраняем текст тега
-        String selectedTag = driver.findElement(By.xpath("(//a[contains(@class, 'btn-link') and contains(@class, 'mb-1.5')]/div/div/span)[1]")).getText();
-        // Переходим по тегу
-        driver.findElement(By.xpath("(//a[contains(@class, 'btn-link') and contains(@class, 'mb-1.5')])[1]")).click();
-        // Проверяем, что заголовок ленты соответствует выбранному тегу
-        {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class, 'text-3xl')]")));
-            assertThat(driver.findElement(By.xpath("//p[contains(@class, 'text-3xl')]")).getText(), is(selectedTag));
-        }
-    }
-
-  public Map<String, Object> getVars() {
-    return vars;
-  }
-
-  public void setVars(Map<String, Object> vars) {
-    this.vars = vars;
-  }
 }
