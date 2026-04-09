@@ -36,27 +36,67 @@ public class G1Test {
     }
 
     @Test
-    public void tS0101() {
+    public void tS0101_ts0102() throws InterruptedException {
         // Открыть главную страницу Mix
         driver.get("https://mix.com//");
-        // Ждать рендера страницы
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         // Нажать на Apple авторизацию
         driver.findElement(By.cssSelector(".flex:nth-child(4) > form:nth-child(3) > .btn")).click();
         // Ручное заполнение данных
-        try {
-            Thread.sleep(30000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // Проверка на наличие иконки профиля
+        Thread.sleep(30000);
+        // Нажатие на иконку профиля
+        driver.findElement(By.xpath("//*[@class='relative inline-block']")).click();
+        // Нажатие на настройки
         {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".z-20 > .aspect-square")));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Settings']")));
+            driver.findElement(By.xpath("//a[text()='Settings']")).click();
+        }
+        // Нажатие на Account Actions
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Account Actions']")));
+            driver.findElement(By.xpath("//button[text()='Account Actions']")).click();
+        }
+        // Log out
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Log Out']")));
+            driver.findElement(By.xpath("//button[text()='Log Out']")).click();
+        }
+        // Log out 2.0
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@class, 'bg-red-600')]")));
+            driver.findElement(By.xpath("//button[contains(@class, 'bg-red-600')]")).click();
+        }
+        // Проверка что мы на главной странице
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'Home_animateFlyLongReverse__5u7eC') and not(contains(@class,'mt-16'))]")));
+        }
+    }
+
+    @Test
+    public void tS0103() throws InterruptedException {
+        // Открыть главную страницу Mix
+        driver.get("https://mix.com//");
+        // Нажать на email авторизацию
+        driver.findElement(By.xpath("(//button[contains(@class, 'btn-square') and not(contains(@class, 'focus:outline-none'))])[1]")).click();
+        // Открытие окна
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[normalize-space()='Join Mix']")));
+            assertThat(driver.findElement(By.xpath("//div[text()='Join Mix']")).getText(), is("Join Mix"));
+        }
+        // Вводим некорретный email
+        driver.findElement(By.xpath("//input[@placeholder='Email address']")).sendKeys("test@ok.r");
+        // Continue
+        driver.findElement(By.xpath("//input[@type='submit']")).click();
+        // Проверка появления ошибки
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'text-red-500')]")));
+            assertThat(driver.findElement(By.xpath("//div[contains(@class, 'text-red-500')]")).getText(), is("Invalid email address. Please try again."));
         }
     }
 }
