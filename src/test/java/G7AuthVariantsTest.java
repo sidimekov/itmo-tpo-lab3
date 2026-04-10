@@ -11,24 +11,15 @@ import static org.hamcrest.core.IsNot.not;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.util.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 
-public class G7Test {
+public class G7AuthVariantsTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -45,6 +36,7 @@ public class G7Test {
         driver.quit();
     }
 
+    //Проверка доступных способов входа
     @Test
     public void tS0700() {
         // Test name: TS-07-00. Отображение способов входа
@@ -83,6 +75,7 @@ public class G7Test {
         }
     }
 
+    //Проверка входа через Google
     @Test
     public void tS0701Google() {
         // Test name: TS-07-01. Проверка открытия окна при входе с Google с главной
@@ -128,6 +121,7 @@ public class G7Test {
         );
     }
 
+    //Проверка входа через Facebook
     @Test
     public void tS0702facebook() {
         // Test name: TS-07-02. Проверка открытия окна при входе с facebook с главной
@@ -147,6 +141,7 @@ public class G7Test {
         driver.findElement(By.xpath("(//form[contains(@action,\'/auth/facebook\')])[1]//button")).click();
     }
 
+    //Проверка входа через Х
     @Test
     public void tS0703X() {
         // Test name: TS-07-03. Проверка открытия окна при входе с X с главной
@@ -166,6 +161,7 @@ public class G7Test {
         driver.findElement(By.xpath("(//form[contains(@action,\'/auth/twitter\')])[1]//button")).click();
     }
 
+    //Проверка входа через email
     @Test
     public void tS0705() {
         // Test name: TS-07-05. Проверка открытия окна при входе с почтой с главной
@@ -205,6 +201,7 @@ public class G7Test {
         }
     }
 
+    //Проверка входа через Apple
     @Test
     public void tS0704apple() {
         // Test name: TS-07-04. Проверка открытия окна при входе с apple с главной

@@ -4,31 +4,21 @@ import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNot.not;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.util.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 
-public class G4Test {
+public class G4CommentsGuestTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -45,6 +35,7 @@ public class G4Test {
         driver.quit();
     }
 
+    //Попытка комментария (гость)
     @Test
     public void tS0401() {
         // Test name: TS-04-01 Попытка комментария (гость)
@@ -77,6 +68,7 @@ public class G4Test {
         }
     }
 
+    //Отображение комментариев
     @Test
     public void tS0402() {
         // Test name: TS-04-02 Отображение комментариев

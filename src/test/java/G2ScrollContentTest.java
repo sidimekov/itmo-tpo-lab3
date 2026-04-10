@@ -11,24 +11,15 @@ import static org.hamcrest.core.IsNot.not;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.util.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 
-public class G2Test {
+public class G2ScrollContentTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -45,6 +36,7 @@ public class G2Test {
         driver.quit();
     }
 
+    //Начало просмотра через Start Exploring
     @Test
     public void tS0201StartExploring() {
         // Test name: TS-02-01. Начало просмотра через Start Exploring
@@ -75,6 +67,7 @@ public class G2Test {
         }
     }
 
+    //Переход к следующему материалу (Next)
     @Test
     public void tS0202() {
         // Test name: TS-02-02. Переход к следующему материалу
@@ -106,6 +99,7 @@ public class G2Test {
         assertEquals(vars.get("isChanged").toString(), "true");
     }
 
+    //Доступность элементов просмотра после перехода к материалу
     @Test
     public void tS0203() {
         // Test name: TS-02-03 Доступность элементов просмотра после перехода к материалу
@@ -146,6 +140,7 @@ public class G2Test {
         }
     }
 
+    //Повторный последовательный переход к следующему материалу
     @Test
     public void tS0204() {
         // Test name: TS-02-04. Повторный последовательный переход к следующему материалу

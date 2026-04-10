@@ -14,7 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.time.Duration;
 import java.util.*;
 
-public class G1Test {
+public class G1LoginLogoutTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -31,6 +31,7 @@ public class G1Test {
         driver.quit();
     }
 
+    //Успешный вход и выход
     @Test
     public void tS0101_ts0102() throws InterruptedException {
         // Открыть главную страницу Mix
@@ -72,6 +73,7 @@ public class G1Test {
         }
     }
 
+    //Невалидный вход
     @Test
     public void tS0103() throws InterruptedException {
         // Открыть главную страницу Mix

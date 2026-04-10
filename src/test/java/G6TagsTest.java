@@ -18,7 +18,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.time.Duration;
 import java.util.*;
 
-public class G6Test {
+public class G6TagsTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -35,6 +35,7 @@ public class G6Test {
         driver.quit();
     }
 
+    //Отображение списка тегов
     @Test
     public void tS0601() {
         // Открываем материал
@@ -46,6 +47,7 @@ public class G6Test {
         }
     }
 
+    //Переход по тегу
     @Test
     public void tS0602() throws InterruptedException {
         // Открываем материал
@@ -62,6 +64,7 @@ public class G6Test {
         }
     }
 
+    //Отображение связанного контента после выбора тега
     @Test
     public void tS0603() throws InterruptedException {
         // Открываем тег
