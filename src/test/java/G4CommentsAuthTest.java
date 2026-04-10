@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.AuthSetup;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -16,35 +17,17 @@ import java.util.Map;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class G4CommentsTest {
+public class G4CommentsAuthTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
 
     private static final String BASE_URL = "https://mix.com/";
+    private static final String COMMENT_INPUT_XPATH = "//input[@type='text' and (contains(@placeholder,'Add a comment...') or contains(@placeholder,'Be the first to comment...'))]";
 
     @Before
     public void setUp() {
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-
-        String authCookieValue = System.getenv("MIX_AUTH_COOKIE");
-        if (authCookieValue == null || authCookieValue.isBlank()) {
-            throw new IllegalStateException("MIX_AUTH_COOKIE is not set");
-        }
-
-        driver.get(BASE_URL);
-
-        driver.manage().addCookie(
-                new Cookie.Builder("intoprd", authCookieValue)
-                        .domain("mix.com")
-                        .path("/")
-                        .isSecure(true)
-                        .build()
-        );
-
-        driver.navigate().refresh();
-
+        driver = AuthSetup.createAuthorizedDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<>();
     }
@@ -56,9 +39,9 @@ public class G4CommentsTest {
 
     @Test
     public void tS0403CommentFormDisplayAuthorized() {
-        // TS-04-03 Отображение формы комментария (авторизованный пользователь)
+        // TS-04-03 Отображение формы комментария для авторизованного
 
-        openFirstMaterial();
+//        openFirstMaterial();
         scrollToComments();
 
         // Проверяем, что нет предложения авторизоваться
@@ -66,10 +49,7 @@ public class G4CommentsTest {
 
         // Проверяем, что есть форма/поле комментария
         WebElement commentInput = waitForAnyVisible(
-                By.xpath("//textarea"),
-                By.xpath("//div[@contenteditable='true']"),
-                By.xpath("//textarea[contains(@placeholder,'comment') or contains(@placeholder,'Comment')]"),
-                By.xpath("//textarea[contains(@placeholder,'conversation') or contains(@placeholder,'Conversation')]")
+                By.xpath(COMMENT_INPUT_XPATH)
         );
 
         assertTrue(commentInput.isDisplayed());
@@ -79,20 +59,17 @@ public class G4CommentsTest {
     public void tS0404CommentInput() {
         // TS-04-04 Ввод комментария
 
-        openFirstMaterial();
+//        openFirstMaterial();
         scrollToComments();
 
         WebElement commentInput = waitForAnyVisible(
-                By.xpath("//textarea"),
-                By.xpath("//div[@contenteditable='true']"),
-                By.xpath("//textarea[contains(@placeholder,'comment') or contains(@placeholder,'Comment')]"),
-                By.xpath("//textarea[contains(@placeholder,'conversation') or contains(@placeholder,'Conversation')]")
+                By.xpath(COMMENT_INPUT_XPATH)
         );
 
-        String commentText = "Autotest comment input " + System.currentTimeMillis();
+        String commentText = "супер🥶🐒🥰 " + System.currentTimeMillis();
         typeIntoCommentField(commentInput, commentText);
 
-        String actualText = getCommentFieldText(commentInput);
+        String actualText = commentInput.getAttribute("value");
         assertTrue(actualText.contains(commentText));
     }
 
@@ -100,29 +77,17 @@ public class G4CommentsTest {
     public void tS0405SendComment() {
         // TS-04-05 Отправка комментария
 
-        openFirstMaterial();
+//        openFirstMaterial();
         scrollToComments();
 
         WebElement commentInput = waitForAnyVisible(
-                By.xpath("//textarea"),
-                By.xpath("//div[@contenteditable='true']"),
-                By.xpath("//textarea[contains(@placeholder,'comment') or contains(@placeholder,'Comment')]"),
-                By.xpath("//textarea[contains(@placeholder,'conversation') or contains(@placeholder,'Conversation')]")
+                By.xpath(COMMENT_INPUT_XPATH)
         );
 
-        String commentText = "Autotest send comment " + System.currentTimeMillis();
+        String commentText = "вау😩🏳️‍🌈🥰  " + System.currentTimeMillis();
         typeIntoCommentField(commentInput, commentText);
 
-        WebElement submitButton = waitForAnyClickable(
-                By.xpath("//button[@type='submit']"),
-                By.xpath("//button[normalize-space()='Post']"),
-                By.xpath("//button[normalize-space()='Comment']"),
-                By.xpath("//button[normalize-space()='Send']"),
-                By.xpath("//button[contains(.,'Post')]"),
-                By.xpath("//button[contains(.,'Comment')]")
-        );
-
-        submitButton.click();
+        commentInput.sendKeys(Keys.ENTER);
 
         // Проверяем, что комментарий появился в списке
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -137,29 +102,17 @@ public class G4CommentsTest {
     public void tS0406PublishedCommentDisplayedAsAuthor() {
         // TS-04-06 Отображение опубликованного комментария автора
 
-        openFirstMaterial();
+//        openFirstMaterial();
         scrollToComments();
 
         WebElement commentInput = waitForAnyVisible(
-                By.xpath("//textarea"),
-                By.xpath("//div[@contenteditable='true']"),
-                By.xpath("//textarea[contains(@placeholder,'comment') or contains(@placeholder,'Comment')]"),
-                By.xpath("//textarea[contains(@placeholder,'conversation') or contains(@placeholder,'Conversation')]")
+                By.xpath(COMMENT_INPUT_XPATH)
         );
 
-        String commentText = "Autotest author comment " + System.currentTimeMillis();
+        String commentText = "эмейзинг♿🤢🦍 " + System.currentTimeMillis();
         typeIntoCommentField(commentInput, commentText);
 
-        WebElement submitButton = waitForAnyClickable(
-                By.xpath("//button[@type='submit']"),
-                By.xpath("//button[normalize-space()='Post']"),
-                By.xpath("//button[normalize-space()='Comment']"),
-                By.xpath("//button[normalize-space()='Send']"),
-                By.xpath("//button[contains(.,'Post')]"),
-                By.xpath("//button[contains(.,'Comment')]")
-        );
-
-        submitButton.click();
+        commentInput.sendKeys(Keys.ENTER);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -174,15 +127,12 @@ public class G4CommentsTest {
     public void tS0407ViewCommentsAuthorized() {
         // TS-04-07 Просмотр комментариев авторизованным пользователем
 
-        openFirstMaterial();
+//        openFirstMaterial();
         scrollToComments();
 
         // Проверяем наличие блока комментариев / списка комментариев
         boolean commentsVisible =
-                isElementPresent(By.xpath("//*[contains(normalize-space(),'Comments')]")) ||
-                        isElementPresent(By.xpath("//section[.//*[contains(normalize-space(),'Comments')]]")) ||
-                        isElementPresent(By.xpath("//div[.//*[contains(normalize-space(),'Comments')]]")) ||
-                        isElementPresent(By.xpath("//article[.//*[contains(normalize-space(),'Comments')]]"));
+                isElementPresent(By.xpath("//div[contains(@class,'overflow-y-scroll') and contains(@class,'space-y-4')]"));
 
         assertTrue(commentsVisible);
     }
@@ -210,8 +160,8 @@ public class G4CommentsTest {
     private void scrollToComments() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-        By commentsBlock = By.xpath("//*[contains(normalize-space(),'Comments') or contains(normalize-space(),'Join the conversation')]");
-        WebElement commentsElement = wait.until(ExpectedConditions.presenceOfElementLocated(commentsBlock));
+        By commentsInput = By.xpath(COMMENT_INPUT_XPATH);
+        WebElement commentsElement = wait.until(ExpectedConditions.presenceOfElementLocated(commentsInput));
 
         js.executeScript("arguments[0].scrollIntoView({block: 'center'});", commentsElement);
 
@@ -231,7 +181,7 @@ public class G4CommentsTest {
             } catch (TimeoutException ignored) {
             }
         }
-        throw new NoSuchElementException("None of the target elements became visible");
+        throw new NoSuchElementException("не вижу");
     }
 
     private WebElement waitForAnyClickable(By... locators) {
@@ -243,7 +193,7 @@ public class G4CommentsTest {
             } catch (TimeoutException ignored) {
             }
         }
-        throw new NoSuchElementException("None of the target elements became clickable");
+        throw new NoSuchElementException("не кликается (нет такого)");
     }
 
     private boolean isElementPresent(By locator) {
@@ -252,26 +202,8 @@ public class G4CommentsTest {
     }
 
     private void typeIntoCommentField(WebElement element, String text) {
-        String tagName = element.getTagName().toLowerCase();
-
-        if ("textarea".equals(tagName) || "input".equals(tagName)) {
-            element.click();
-            element.clear();
-            element.sendKeys(text);
-        } else {
-            element.click();
-            element.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-            element.sendKeys(Keys.DELETE);
-            element.sendKeys(text);
-        }
-    }
-
-    private String getCommentFieldText(WebElement element) {
-        String tagName = element.getTagName().toLowerCase();
-
-        if ("textarea".equals(tagName) || "input".equals(tagName)) {
-            return element.getAttribute("value");
-        }
-        return element.getText();
+        element.click();
+        element.clear();
+        element.sendKeys(text);
     }
 }
