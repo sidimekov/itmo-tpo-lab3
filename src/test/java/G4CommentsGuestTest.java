@@ -35,6 +35,7 @@ public class G4CommentsGuestTest {
         driver.quit();
     }
 
+    //Попытка комментария (гость)
     @Test
     public void tS0401() {
         // Test name: TS-04-01 Попытка комментария (гость)
@@ -67,6 +68,7 @@ public class G4CommentsGuestTest {
         }
     }
 
+    //Отображение комментариев
     @Test
     public void tS0402() {
         // Test name: TS-04-02 Отображение комментариев

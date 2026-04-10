@@ -35,6 +35,7 @@ public class G6TagsTest {
         driver.quit();
     }
 
+    //Отображение списка тегов
     @Test
     public void tS0601() {
         // Открываем материал
@@ -46,6 +47,7 @@ public class G6TagsTest {
         }
     }
 
+    //Переход по тегу
     @Test
     public void tS0602() throws InterruptedException {
         // Открываем материал
@@ -62,6 +64,7 @@ public class G6TagsTest {
         }
     }
 
+    //Отображение связанного контента после выбора тега
     @Test
     public void tS0603() throws InterruptedException {
         // Открываем тег

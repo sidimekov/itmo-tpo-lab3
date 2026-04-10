@@ -31,6 +31,7 @@ public class G1LoginLogoutTest {
         driver.quit();
     }
 
+    //Успешный вход и выход
     @Test
     public void tS0101_ts0102() throws InterruptedException {
         // Открыть главную страницу Mix
@@ -72,6 +73,7 @@ public class G1LoginLogoutTest {
         }
     }
 
+    //Невалидный вход
     @Test
     public void tS0103() throws InterruptedException {
         // Открыть главную страницу Mix

@@ -31,6 +31,7 @@ public class G3LikeDislikeTest {
         driver.quit();
     }
 
+    //Like/Dislike контента
     @Test
     public void tS0301_tS0302() throws InterruptedException {
         // Открываем материал

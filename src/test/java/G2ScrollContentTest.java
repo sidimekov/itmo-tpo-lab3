@@ -36,6 +36,7 @@ public class G2ScrollContentTest {
         driver.quit();
     }
 
+    //Начало просмотра через Start Exploring
     @Test
     public void tS0201StartExploring() {
         // Test name: TS-02-01. Начало просмотра через Start Exploring
@@ -66,6 +67,7 @@ public class G2ScrollContentTest {
         }
     }
 
+    //Переход к следующему материалу (Next)
     @Test
     public void tS0202() {
         // Test name: TS-02-02. Переход к следующему материалу
@@ -97,6 +99,7 @@ public class G2ScrollContentTest {
         assertEquals(vars.get("isChanged").toString(), "true");
     }
 
+    //Доступность элементов просмотра после перехода к материалу
     @Test
     public void tS0203() {
         // Test name: TS-02-03 Доступность элементов просмотра после перехода к материалу
@@ -137,6 +140,7 @@ public class G2ScrollContentTest {
         }
     }
 
+    //Повторный последовательный переход к следующему материалу
     @Test
     public void tS0204() {
         // Test name: TS-02-04. Повторный последовательный переход к следующему материалу

@@ -31,6 +31,7 @@ public class G5FollowingTest {
         driver.quit();
     }
 
+    //Подписка/отписка на пользователя
     @Test
     public void tS0501TS0502() throws InterruptedException {
         // Открыть главную страницу Mix
@@ -63,6 +64,7 @@ public class G5FollowingTest {
         }
     }
 
+    //Подписка/отписка на тег
     @Test
     public void tS0503TS0504() throws InterruptedException {
         // Открыть материал

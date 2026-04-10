@@ -36,6 +36,7 @@ public class G7AuthVariantsTest {
         driver.quit();
     }
 
+    //Проверка доступных способов входа
     @Test
     public void tS0700() {
         // Test name: TS-07-00. Отображение способов входа
@@ -74,6 +75,7 @@ public class G7AuthVariantsTest {
         }
     }
 
+    //Проверка входа через Google
     @Test
     public void tS0701Google() {
         // Test name: TS-07-01. Проверка открытия окна при входе с Google с главной
@@ -119,6 +121,7 @@ public class G7AuthVariantsTest {
         );
     }
 
+    //Проверка входа через Facebook
     @Test
     public void tS0702facebook() {
         // Test name: TS-07-02. Проверка открытия окна при входе с facebook с главной
@@ -138,6 +141,7 @@ public class G7AuthVariantsTest {
         driver.findElement(By.xpath("(//form[contains(@action,\'/auth/facebook\')])[1]//button")).click();
     }
 
+    //Проверка входа через Х
     @Test
     public void tS0703X() {
         // Test name: TS-07-03. Проверка открытия окна при входе с X с главной
@@ -157,6 +161,7 @@ public class G7AuthVariantsTest {
         driver.findElement(By.xpath("(//form[contains(@action,\'/auth/twitter\')])[1]//button")).click();
     }
 
+    //Проверка входа через email
     @Test
     public void tS0705() {
         // Test name: TS-07-05. Проверка открытия окна при входе с почтой с главной
@@ -196,6 +201,7 @@ public class G7AuthVariantsTest {
         }
     }
 
+    //Проверка входа через Apple
     @Test
     public void tS0704apple() {
         // Test name: TS-07-04. Проверка открытия окна при входе с apple с главной
