@@ -127,4 +127,100 @@ public class G7Test {
                 newWindowUrl.toLowerCase().contains("google")
         );
     }
+
+    @Test
+    public void tS0702facebook() {
+        // Test name: TS-07-02. Проверка открытия окна при входе с facebook с главной
+        // Step # | name | target | value
+        // 1 | open | / |
+        driver.get("https://mix.com//");
+        // 2 | storeWindowHandle | win0 |
+        vars.put("win0", driver.getWindowHandle());
+        // 3 | click | xpath=(//form[contains(@action,'/auth/facebook')])[1]//button |
+        driver.findElement(By.xpath("(//form[contains(@action,\'/auth/facebook\')])[1]//button")).click();
+        // 4 | assertElementPresent | xpath=(//form[contains(@action,'/auth/facebook')])[1]//button |
+        {
+            List<WebElement> elements = driver.findElements(By.xpath("(//form[contains(@action,\'/auth/facebook\')])[1]//button"));
+            assert (elements.size() > 0);
+        }
+        // 5 | click | xpath=(//form[contains(@action,'/auth/facebook')])[1]//button |
+        driver.findElement(By.xpath("(//form[contains(@action,\'/auth/facebook\')])[1]//button")).click();
+    }
+
+    @Test
+    public void tS0703X() {
+        // Test name: TS-07-03. Проверка открытия окна при входе с X с главной
+        // Step # | name | target | value
+        // 1 | open | / |
+        driver.get("https://mix.com//");
+        // 2 | storeWindowHandle | win0 |
+        vars.put("win0", driver.getWindowHandle());
+        // 3 | click | xpath=(//form[contains(@action,'/auth/twitter')])[1]//button |
+        driver.findElement(By.xpath("(//form[contains(@action,\'/auth/twitter\')])[1]//button")).click();
+        // 4 | assertElementPresent | xpath=(//form[contains(@action,'/auth/twitter')])[1]//button |
+        {
+            List<WebElement> elements = driver.findElements(By.xpath("(//form[contains(@action,\'/auth/twitter\')])[1]//button"));
+            assert (elements.size() > 0);
+        }
+        // 5 | click | xpath=(//form[contains(@action,'/auth/twitter')])[1]//button |
+        driver.findElement(By.xpath("(//form[contains(@action,\'/auth/twitter\')])[1]//button")).click();
+    }
+
+    @Test
+    public void tS0705() {
+        // Test name: TS-07-05. Проверка открытия окна при входе с почтой с главной
+        // Step # | name | target | value
+        // 1 | open | / |
+        driver.get("https://mix.com//");
+        // 2 | storeWindowHandle | win0 |
+        vars.put("win0", driver.getWindowHandle());
+        // 3 | click | xpath=(//button[contains(@class, 'btn-square') and not(contains(@class, 'focus:outline-none'))])[1] |
+        driver.findElement(By.xpath("(//button[contains(@class, \'btn-square\') and not(contains(@class, \'focus:outline-none\'))])[1]")).click();
+        // 4 | assertElementPresent | xpath=(//button[contains(@class, 'btn-square') and not(contains(@class, 'focus:outline-none'))])[1] |
+        {
+            List<WebElement> elements = driver.findElements(By.xpath("(//button[contains(@class, \'btn-square\') and not(contains(@class, \'focus:outline-none\'))])[1]"));
+            assert (elements.size() > 0);
+        }
+        // 5 | click | xpath=(//button[contains(@class, 'btn-square') and not(contains(@class, 'focus:outline-none'))])[1] |
+        By emailBtn = By.xpath("(//button[contains(@class,'btn-square') and not(contains(@class,'focus:outline-none'))])[1]");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        WebElement button = wait.until(ExpectedConditions.visibilityOfElementLocated(emailBtn));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", button);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
+        // 6 | verifyElementPresent | xpath=//div[normalize-space()='Join Mix'] |
+        {
+            List<WebElement> elements = driver.findElements(By.xpath("//div[normalize-space()=\'Join Mix\']"));
+            assert (elements.size() > 0);
+        }
+        // 7 | verifyElementPresent | xpath=//input[@name='email' and @placeholder='Email address'] |
+        {
+            List<WebElement> elements = driver.findElements(By.xpath("//input[@name=\'email\' and @placeholder=\'Email address\']"));
+            assert (elements.size() > 0);
+        }
+        // 8 | verifyElementPresent | xpath=//input[@type='submit' and @value='Continue'] |
+        {
+            List<WebElement> elements = driver.findElements(By.xpath("//input[@type=\'submit\' and @value=\'Continue\']"));
+            assert (elements.size() > 0);
+        }
+    }
+
+    @Test
+    public void tS0704apple() {
+        // Test name: TS-07-04. Проверка открытия окна при входе с apple с главной
+        // Step # | name | target | value
+        // 1 | open | / |
+        driver.get("https://mix.com//");
+        // 2 | storeWindowHandle | win0 |
+        vars.put("win0", driver.getWindowHandle());
+        // 3 | click | xpath=(//form[contains(@action,'/auth/apple')])[1]//button |
+        driver.findElement(By.xpath("(//form[contains(@action,\'/auth/apple\')])[1]//button")).click();
+        // 4 | assertElementPresent | xpath=(//form[contains(@action,'/auth/apple')])[1]//button |
+        {
+            List<WebElement> elements = driver.findElements(By.xpath("(//form[contains(@action,\'/auth/apple\')])[1]//button"));
+            assert (elements.size() > 0);
+        }
+        // 5 | click | xpath=(//form[contains(@action,'/auth/apple')])[1]//button |
+        driver.findElement(By.xpath("(//form[contains(@action,\'/auth/apple\')])[1]//button")).click();
+    }
 }
