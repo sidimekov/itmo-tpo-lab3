@@ -14,7 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.time.Duration;
 import java.util.*;
 
-public class G1Test {
+public class G1LoginLogoutTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;

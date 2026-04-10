@@ -18,7 +18,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.time.Duration;
 import java.util.*;
 
-public class G6Test {
+public class G6TagsTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;

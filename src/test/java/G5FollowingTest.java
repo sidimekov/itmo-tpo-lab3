@@ -14,7 +14,7 @@ import java.util.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class G5Test {
+public class G5FollowingTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;

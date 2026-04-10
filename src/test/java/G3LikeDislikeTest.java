@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,7 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.time.Duration;
 import java.util.*;
 
-public class G3Test {
+public class G3LikeDislikeTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
