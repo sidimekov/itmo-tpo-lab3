@@ -84,7 +84,7 @@ public class G4CommentsAuthTest {
                 By.xpath(COMMENT_INPUT_XPATH)
         );
 
-        String commentText = "вау😩🏳️‍🌈🥰  " + System.currentTimeMillis();
+        String commentText = "вау😩🏳️‍🌈🥰 " + System.currentTimeMillis();
         typeIntoCommentField(commentInput, commentText);
 
         commentInput.sendKeys(Keys.ENTER);
@@ -92,7 +92,7 @@ public class G4CommentsAuthTest {
         // Проверяем, что комментарий появился в списке
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[contains(normalize-space(),\"" + commentText + "\")]")
+                By.xpath("//*[contains(normalize-space(),'" + commentText + "')]")
         ));
 
         assertTrue(isElementPresent(By.xpath("//*[contains(normalize-space(),\"" + commentText + "\")]")));
