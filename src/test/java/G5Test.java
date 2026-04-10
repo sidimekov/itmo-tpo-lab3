@@ -32,7 +32,7 @@ public class G5Test {
     }
 
     @Test
-    public void tS0502TS0503() throws InterruptedException {
+    public void tS0501TS0502() throws InterruptedException {
         // Открыть главную страницу Mix
         driver.get("https://mix.com//");
         // Нажать на Apple авторизацию
@@ -63,26 +63,29 @@ public class G5Test {
         }
     }
 
-    //хз
     @Test
-    public void tS0501() throws InterruptedException {
-        // Открыть главную страницу Mix
-        driver.get("https://mix.com//");
-        // Нажать на Apple авторизацию
-        driver.findElement(By.xpath("(//form[contains(@action,'/auth/apple')]/button)[1]")).click();
+    public void tS0503TS0504() throws InterruptedException {
+        // Открыть материал
+        driver.get("https://mix.com/topic/guitars");
+        // Нажать на подписку
+        driver.findElement(By.xpath("//button[contains(@class, 'btn-primary') and text()='Follow']")).click();
+        // Зайти через Apple
+        driver.findElement(By.xpath("//button[./span[text()='Apple']]")).click();
         // Ручное заполнение данных
         Thread.sleep(30000);
-        // Нажатие на +
-        driver.findElement(By.xpath("(//div[contains(@class, 'hover:text-primary')])[1]")).click();
-        // Ввод ссылки
-        driver.findElement(By.xpath("//input[@type='url']")).sendKeys("https://github.com/sidimekov/itmo-tpo-lab3/tree/main/src/test/java");
-        // Опубликовать
-        driver.findElement(By.xpath("//input[@type='submit']")).click();
-        // Загрузка и проверка публикации
+        // Нажать на подписку
+        driver.findElement(By.xpath("//button[contains(@class, 'btn-primary') and text()='Follow']")).click();
+        // проверка что подписка есть
         {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'go2072408551')]/div[@role='status' and @aria-live='polite']")));
-            assertThat(driver.findElement(By.xpath("//div[contains(@class, 'go2072408551')]/div[@role='status' and @aria-live='polite']")).getText(), is("Added to Mix"));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@class, 'btn-primary') and text()='Following']")));
+        }
+        // Отписаться
+        driver.findElement(By.xpath("//button[contains(@class, 'btn-primary') and text()='Following']")).click();
+        // Проверка отписки
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@class, 'btn-primary') and text()='Follow']")));
         }
     }
 }
