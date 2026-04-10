@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -35,6 +36,10 @@ public class G3Test {
     public void tS0301_tS0302() throws InterruptedException {
         // Открываем материал
         driver.get("https://mix.com/!870259105913111552");
+        //Закрыть окно, если оно есть
+        //driver.findElement(By.xpath("//div[@id='close' and @aria-label='Закрыть']")).click();
+        //Thread.sleep(500000);
+
         // Нажать на авторизацию
         driver.findElement(By.xpath("//button[text()='Join Mix']")).click();
         // Выбираем Apple
@@ -42,7 +47,7 @@ public class G3Test {
         // Ручное заполнение данных
         Thread.sleep(30000);
         // Нажимаем Like
-        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]")).click();
+        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]/button")).click();
         //Проверяем, что он стоит
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -50,7 +55,7 @@ public class G3Test {
             Thread.sleep(5000);
         }
         // Нажимаем Like
-        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]")).click();
+        driver.findElement(By.xpath("//div[./span[text()='Like (L)']]/button")).click();
         //Проверяем, что он не стоит
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -58,7 +63,7 @@ public class G3Test {
             Thread.sleep(5000);
         }
         // Нажимаем Disike
-        driver.findElement(By.xpath("//div[./span[text()='Dislike (D)']]")).click();
+        driver.findElement(By.xpath("//div[./span[text()='Dislike (D)']]/button")).click();
         //Проверяем, что такого контента не будет
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));

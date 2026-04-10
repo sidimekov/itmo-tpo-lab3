@@ -695,6 +695,313 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "2dda455a-71fe-4ccd-b547-4925bd269ec0",
+    "name": "TS-01-01 + TS-01-02. Успешный вход и выход",
+    "commands": [{
+      "id": "009cd192-75e0-4fc2-b302-03ed58357476",
+      "comment": "Открыть главную страницу Mix",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "42d6cb02-1f76-4819-b8bf-3895672ce940",
+      "comment": "Нажать на Apple авторизацию",
+      "command": "click",
+      "target": "xpath=(//form[contains(@action,'/auth/apple')]/button)[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cc993273-3575-4b62-9007-de7cead3659d",
+      "comment": "Ручное заполнение данных",
+      "command": "pause",
+      "target": "30000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ee4a572a-5c14-48e9-86f8-e965f5042187",
+      "comment": "Нажатие на иконку профиля",
+      "command": "click",
+      "target": "xpath=//div[@class='relative inline-block']/div/a",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eebd9a54-7f99-4c4f-bc5c-fb2386617bad",
+      "comment": "Нажатие на настройки",
+      "command": "click",
+      "target": "xpath=//a[contains(@class,'btn-dot')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5174a7a5-1562-49d3-aa9b-63fa1c7c7864",
+      "comment": "Нажатие на Account Actions",
+      "command": "click",
+      "target": "xpath=//button[text()='Account Actions']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dce12a49-3868-45c9-8371-c1268b387264",
+      "comment": "Log out",
+      "command": "click",
+      "target": "xpath=//button[text()='Log Out']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "da16f16f-4bb3-4dcd-8ce3-ef9aed725707",
+      "comment": "log out 2.0",
+      "command": "click",
+      "target": "xpath=//button[contains(@class, 'bg-red-600')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1adbe699-3719-489f-a9b7-dc8cc0305490",
+      "comment": "Проверка что мы на главной странице",
+      "command": "waitForElementVisible",
+      "target": "xpath=//div[contains(@class, 'Home_animateFlyLongReverse__5u7eC') and not(contains(@class,'mt-16'))]",
+      "targets": [],
+      "value": "3000"
+    }]
+  }, {
+    "id": "8cf50702-cb01-4024-8e6f-2d71094d475f",
+    "name": "TS-01-03. Невалидный вход",
+    "commands": [{
+      "id": "34616658-6a81-438b-b00d-2cbdad57ed7a",
+      "comment": "Открыть главную страницу Mix",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2293de3c-0fd7-4309-a2c0-4463c0737907",
+      "comment": "Нажать на email авторизацию",
+      "command": "click",
+      "target": "xpath=(//button[contains(@class, 'btn-square') and not(contains(@class, 'focus:outline-none'))])[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c2f1feae-5bc6-4b8a-a86c-2bdc19bedf30",
+      "comment": "Открытие окна",
+      "command": "assertText",
+      "target": "//div[text()='Join Mix']",
+      "targets": [],
+      "value": "Join Mix"
+    }, {
+      "id": "3df227e6-1c53-4607-a38a-ea0e10a45e3c",
+      "comment": "Вводим некорретный email",
+      "command": "sendKeys",
+      "target": "//input[@placeholder='Email address']",
+      "targets": [],
+      "value": "test@ok.r"
+    }, {
+      "id": "5419384e-2470-43f7-bded-88a850928fe7",
+      "comment": "Проверка появления ошибки",
+      "command": "assertText",
+      "target": "//div[contains(@class, 'text-red-500')]",
+      "targets": [],
+      "value": "Invalid email address. Please try again."
+    }]
+  }, {
+    "id": "a95657b9-96e1-4a0f-9bfc-152864267520",
+    "name": "TS-03-01 + TS-03-02. Like/Dislike контент",
+    "commands": [{
+      "id": "92516fe5-bd5b-4a52-a6c9-a3a3fb01e769",
+      "comment": "Открываем материал",
+      "command": "open",
+      "target": "/!870259105913111552",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6c03a99f-fb01-449f-b493-c7ff080a861b",
+      "comment": "Нажать на авторизацию",
+      "command": "click",
+      "target": "xpath=//button[text()='Join Mix']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca52bddf-8dbd-4c03-acfc-25e3e6ac961d",
+      "comment": "Выбираем Apple",
+      "command": "click",
+      "target": "xpath=//button[./span[text()='Apple']]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f60154b2-cdeb-41e3-a39a-3fc6c5ae0a27",
+      "comment": "Ручное заполнение данных",
+      "command": "pause",
+      "target": "30000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c5dfd6d8-7988-4d31-81c2-4fc416711dba",
+      "comment": "Нажимаем Like",
+      "command": "click",
+      "target": "xpath=//div[./span[text()='Like (L)']]/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "14104989-261e-4c84-bf41-2df9ece9d909",
+      "comment": "Проверяем, что он стоит",
+      "command": "waitForElementVisible",
+      "target": "xpath=//div[./span[text()='Like (L)'] and ./button[contains(@class, 'opacity-100')]]",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "93844a16-0810-4127-b9e7-091bd4289507",
+      "comment": "Нажимаем Like",
+      "command": "click",
+      "target": "xpath=//div[./span[text()='Like (L)']]/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c76d8f21-d6ba-463f-ab65-824868144d66",
+      "comment": "Проверяем, что он не стоит",
+      "command": "waitForElementVisible",
+      "target": "xpath=//div[./span[text()='Like (L)'] and ./button[contains(@class, 'opacity-50')]]",
+      "targets": [],
+      "value": "3000"
+    }, {
+      "id": "b43089e4-4397-4327-aafa-e20b3e6a6ad6",
+      "comment": "Нажимаем Disike",
+      "command": "click",
+      "target": "xpath=//div[./span[text()='Dislike (D)']]/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9dc66599-918e-4e69-869e-d579b7dd5d4b",
+      "comment": "Проверяем, что такого контента не будет",
+      "command": "assertText",
+      "target": "xpath=//div[@role='status' and @aria-live='polite']",
+      "targets": [],
+      "value": "You'll see less like that"
+    }]
+  }, {
+    "id": "8ccee125-3856-470b-82d9-a336cf720a68",
+    "name": "TS-05-02 + TS-05-03. Подписка и отписка на пользователя ",
+    "commands": [{
+      "id": "7e8cf110-bcd7-4645-b7d5-39e20347972b",
+      "comment": "Открыть главную страницу Mix",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "667c3ebe-1833-4046-af7c-62ede6d93359",
+      "comment": "Нажать на Apple авторизацию",
+      "command": "click",
+      "target": "xpath=(//form[contains(@action,'/auth/apple')]/button)[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "afd0b450-48bd-4504-9566-a565266626ae",
+      "comment": "Ручное заполнение данных",
+      "command": "pause",
+      "target": "30000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "22d116f6-2650-4ecc-95c0-82d6c5ab1791",
+      "comment": "Нажатие на поиск",
+      "command": "click",
+      "target": "xpath=//a[contains(@class, 'sm:block')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "922fc03c-49ad-4f65-a865-0134b72b25e0",
+      "comment": "Поиск профиля",
+      "command": "sendKeys",
+      "target": "xpath=//input[contains(@class, 'h-fit')]",
+      "targets": [],
+      "value": "@55e5d"
+    }, {
+      "id": "cebcd321-cbf7-4dac-93ad-bad2a7225a3f",
+      "comment": "Подписаться",
+      "command": "click",
+      "target": "xpath=\"//div[contains(@class, 'z-20')]/button\"",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "41d395ce-4fba-4b5c-8673-3a268a83224d",
+      "comment": "Проверка подписки",
+      "command": "waitForElementVisible",
+      "target": "xpath=//div[contains(@class, 'z-20')]/button[contains(@class, 'btn-secondary')]",
+      "targets": [],
+      "value": "5000"
+    }, {
+      "id": "d9aa4801-2114-43d3-82d3-dfe8593f744f",
+      "comment": "Отписаться",
+      "command": "click",
+      "target": "xpath=\"//div[contains(@class, 'z-20')]/button\"",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "053de383-d0b1-4338-a008-f55dbe5879cf",
+      "comment": "Проверка отписки",
+      "command": "waitForElementVisible",
+      "target": "xpath=//div[contains(@class, 'z-20')]/button[not(contains(@class, 'btn-secondary'))]",
+      "targets": [],
+      "value": "5000"
+    }]
+  }, {
+    "id": "b2ba0dd7-a6fe-4c01-919b-196ac3015f8a",
+    "name": "TS-05-01. Создание материала",
+    "commands": [{
+      "id": "9531a86c-a99e-40ba-b197-580557f19c3e",
+      "comment": "Открыть главную страницу Mix",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "37d616fa-e291-4e3b-9cca-c94ab7d10cce",
+      "comment": "Нажать на Apple авторизацию",
+      "command": "click",
+      "target": "xpath=(//form[contains(@action,'/auth/apple')]/button)[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "753682a9-0aa4-47bf-a11c-fd19d0caeabc",
+      "comment": "Ручное заполнение данных",
+      "command": "pause",
+      "target": "30000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a54b185-dbe5-43b2-ab6d-874af2a2aa57",
+      "comment": "Нажатие на +",
+      "command": "click",
+      "target": "xpath=(//div[contains(@class, 'hover:text-primary')])[1]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec6047da-cac6-40aa-96d5-40e6c9594c5a",
+      "comment": "Ввод ссылки",
+      "command": "sendKeys",
+      "target": "xpath=//input[@type='url']",
+      "targets": [],
+      "value": "https://docs.google.com/spreadsheets/d/1CYBVIQVzlm7jMLbwZOFgiRwzPBqDZvadNiz9cQAV31c/edit?resourcekey=&gid=1098113914#gid=1098113914"
+    }, {
+      "id": "affd9876-c46e-4eb2-a41d-ad1baf40a5d6",
+      "comment": "Опубликовать",
+      "command": "click",
+      "target": "xpath=//input[@type='submit']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f98c66b1-ab88-4fb1-ac9a-fd22782fbf4e",
+      "comment": "Загрузка",
+      "command": "pause",
+      "target": "15000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e784d45f-9ad1-4378-97da-89f5c41e2160",
+      "comment": "Проверка публикации",
+      "command": "assertText",
+      "target": "xpath=//div[@role='status' and @aria-live='polite']",
+      "targets": [],
+      "value": "Added to Mix"
+    }]
   }],
   "suites": [{
     "id": "e5779170-3d91-4ecb-a418-81e5e0cd8efb",
@@ -724,6 +1031,27 @@
     "parallel": false,
     "timeout": 300,
     "tests": ["7ddfae91-9dd9-42b4-8499-ddd9a42a779a", "79526cc2-5acb-4ec3-9c6f-15d7430a119f", "4eaa95ac-9d06-4306-91bf-bc352842af36"]
+  }, {
+    "id": "06477979-180a-4faf-9a1d-bd6d577b7b10",
+    "name": "G1. Авторизация",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["2dda455a-71fe-4ccd-b547-4925bd269ec0", "8cf50702-cb01-4024-8e6f-2d71094d475f"]
+  }, {
+    "id": "9629f9e2-b5fc-4209-8c0a-27ba52102fd0",
+    "name": "G3. Взаимодействие с контентом",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a95657b9-96e1-4a0f-9bfc-152864267520"]
+  }, {
+    "id": "26f942b3-4246-440e-b000-2600ebe18194",
+    "name": "G5. Создание и подписки",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8ccee125-3856-470b-82d9-a336cf720a68", "b2ba0dd7-a6fe-4c01-919b-196ac3015f8a"]
   }],
   "urls": ["https://mix.com/"],
   "plugins": []

@@ -36,15 +36,15 @@ public class G1Test {
         // Открыть главную страницу Mix
         driver.get("https://mix.com//");
         // Нажать на Apple авторизацию
-        driver.findElement(By.cssSelector(".flex:nth-child(4) > form:nth-child(3) > .btn")).click();
+        driver.findElement(By.xpath("(//form[contains(@action,'/auth/apple')]/button)[1]")).click();
         // Ручное заполнение данных
         Thread.sleep(30000);
         // Нажатие на иконку профиля
-        driver.findElement(By.xpath("//*[@class='relative inline-block']")).click();
+        driver.findElement(By.xpath("//div[@class='relative inline-block']/div/a")).click();
         // Нажатие на настройки
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Settings']")));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@class,'btn-dot')]")));
             driver.findElement(By.xpath("//a[text()='Settings']")).click();
         }
         // Нажатие на Account Actions
