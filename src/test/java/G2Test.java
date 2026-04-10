@@ -172,6 +172,6 @@ public class G2Test {
         // 9 | executeScript | return new Set([${url1}, ${url2}, ${url3}]).size === 3; | isDifferent
         vars.put("isDifferent", js.executeScript("return new Set([arguments[0], arguments[1], arguments[2]]).size === 3;", vars.get("url1"), vars.get("url2"), vars.get("url3")));
         // 10 | assert | isDifferent | true
-        assertEquals(vars.get("isDifferent").toString(), "true");
+        assertEquals("true", vars.get("isDifferent").toString());
     }
 }
